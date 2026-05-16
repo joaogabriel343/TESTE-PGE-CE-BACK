@@ -75,7 +75,7 @@ services:
   # ── Frontend Angular + Nginx ────────────────────────────────────────────────
   frontend:
     build:
-      context: ./frontend/rides-frontend
+      context: ../TESTE-PGE-CE-FRONT
       dockerfile: Dockerfile
     container_name: rides_frontend
     ports:
