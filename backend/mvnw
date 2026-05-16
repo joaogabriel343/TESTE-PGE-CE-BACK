@@ -1,0 +1,35 @@
+#!/bin/sh
+# Maven Wrapper Script
+# https://maven.apache.org/wrapper/
+set -e
+
+if [ -z "$JAVA_HOME" ]; then
+  JAVACMD=java
+else
+  JAVACMD="$JAVA_HOME/bin/java"
+fi
+
+MAVEN_PROJECTBASEDIR="$(cd "$(dirname "$0")" && pwd)"
+WRAPPER_JAR="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar"
+WRAPPER_PROPERTIES="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.properties"
+
+if [ -f "$WRAPPER_JAR" ]; then
+  exec "$JAVACMD" -classpath "$WRAPPER_JAR" org.apache.maven.wrapper.MavenWrapperMain "$@"
+else
+  DISTRIBUTION_URL=$(grep "distributionUrl" "$WRAPPER_PROPERTIES" | cut -d= -f2)
+  WRAPPER_URL=$(grep "wrapperUrl" "$WRAPPER_PROPERTIES" | cut -d= -f2)
+  TMP_DOWNLOAD_DIR=$(mktemp -d)
+  JAR_FILE="$TMP_DOWNLOAD_DIR/maven-wrapper.jar"
+
+  if command -v wget > /dev/null; then
+    wget -q -O "$JAR_FILE" "$WRAPPER_URL"
+  elif command -v curl > /dev/null; then
+    curl -fsSL -o "$JAR_FILE" "$WRAPPER_URL"
+  else
+    echo "ERROR: wget or curl required" >&2; exit 1
+  fi
+
+  mkdir -p "$(dirname "$WRAPPER_JAR")"
+  cp "$JAR_FILE" "$WRAPPER_JAR"
+  exec "$JAVACMD" -classpath "$WRAPPER_JAR" org.apache.maven.wrapper.MavenWrapperMain "$@"
+fi
