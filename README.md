@@ -33,17 +33,16 @@ API REST para gerenciamento de corridas corporativas, desenvolvida em Java 21 + 
 
 > **Pré-requisito:** [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado e em execução.
 
-1. Crie uma pasta, entre nela e clone os dois repositórios:
+Clone os dois repositórios em uma mesma pasta:
 
 ```bash
 git clone https://github.com/joaogabriel343/TESTE-PGE-CE-BACK.git
 git clone https://github.com/joaogabriel343/TESTE-PGE-CE-FRONT.git
 ```
 
-2. Entre na pasta do backend e execute:
+Tire o conteúdo de cada pasta clonada para a raiz e execute:
 
 ```bash
-cd TESTE-PGE-CE-BACK
 docker-compose up --build
 ```
 
